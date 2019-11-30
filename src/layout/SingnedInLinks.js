@@ -85,7 +85,7 @@ class SingnedInLinks extends Component {
                                         </div>
                                     </div>
                                     <Nav.Link href="/user">ข้อมูลส่วนตัว</Nav.Link>
-                                    <Nav.Link href="/loginform" onClick={this.logOut.bind(this)}>ออกจากระบบ</Nav.Link>
+                                    <Nav.Link  onClick={this.logOut.bind(this)}>ออกจากระบบ</Nav.Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
@@ -119,7 +119,7 @@ class SingnedInLinks extends Component {
                                     <Nav.Link href="/add_promotion">เพิ่มโปรโมชั่น</Nav.Link> */}
                                 
                                     <Nav.Link href="/user">ข้อมูลส่วนตัว</Nav.Link>
-                                    <Nav.Link href="/loginform" onClick={this.logOut.bind(this)}>ออกจากระบบ</Nav.Link>
+                                    <Nav.Link  onClick={this.logOut.bind(this)}>ออกจากระบบ</Nav.Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
@@ -136,7 +136,7 @@ class SingnedInLinks extends Component {
                             <Nav className="mr-auto">
                             </Nav>
                             <Nav>
-                                <Nav.Link href="/loginform" onClick={this.logOut.bind(this)}>ออกจากระบบ</Nav.Link>
+                                <Nav.Link  onClick={this.logOut.bind(this)}>ออกจากระบบ</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

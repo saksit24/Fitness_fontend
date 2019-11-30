@@ -2,6 +2,8 @@ import React from 'react';
 import '../App.css';
 import { get, post } from '../service/service';
 import swal from 'sweetalert';
+import {user_token} from '../support/Constance'
+
 
 class LoginForm extends React.Component {
 
@@ -10,6 +12,12 @@ class LoginForm extends React.Component {
     this.state = {
       user: null,
       password: null
+    }
+  }
+
+  componentWillMount(){
+    if(user_token){
+      this.props.history.push('/homereal')
     }
   }
 

@@ -72,16 +72,16 @@ class register extends Component {
                 if (result.success) {
 
                     swal("สมัครสมาชิกเรียบร้อย", "", "success");
-                    setTimeout(() => { window.location.href = "/register" }, 1000)
+                    // setTimeout(() => { window.location.href = "/register" }, 1000)
 
                 } else {
                     alert('error ' + result.error_message);
                 }
             });
         } catch (error) {
-            alert('error :', error);
+            alert('error : ' + error);
         }
-        // console.log("Signup" + this.state);
+        console.log("Signup" + this.state);
     }
 
     oninput = (event) => {
@@ -107,118 +107,120 @@ class register extends Component {
 
     render() {
         const { selectedDay } = this.state;
-        return (<div className ='kuy'  style={{  display: "flex",
-        justifyContent: "center",
-        alignItems: "center",}}>
+        return (<div className='kuy' style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+        }}>
 
 
             <Card>
                 <Card.Body>
                     <Card.Title style={{ fontSize: 30 }}>สมัครสมาชิก</Card.Title>
 
-                    <Form>
-                        <Form.Group >
-                            <Form.Label style={{ float: 'left' }}>ชื่อผู้ใช้</Form.Label>
-                            <Form.Control name="user" onChange={this.oninput} placeholder="กรุณากรอกชื่อผู้ใช้" />
+                    {/* <Form> */}
+                    <Form.Group >
+                        <Form.Label style={{ float: 'left' }}>ชื่อผู้ใช้</Form.Label>
+                        <Form.Control name="user" onChange={this.oninput} placeholder="กรุณากรอกชื่อผู้ใช้" />
 
+                    </Form.Group>
+                    <Form.Row>
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>รหัสผ่าน</Form.Label>
+                            <Form.Control name="password" onChange={this.oninput} type="password" placeholder="รหัสผ่าน" />
                         </Form.Group>
-                        <Form.Row>
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>รหัสผ่าน</Form.Label>
-                                <Form.Control name="password" onChange={this.oninput} type="password" placeholder="รหัสผ่าน" />
-                            </Form.Group>
 
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>ยืนยันรหัสผ่าน</Form.Label>
-                                <Form.Control name="con_password" onChange={this.oninput} type="password" placeholder="ยืนยันรหัสผ่าน" />
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Row>
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>ชื่อ (ภาษาไทย)</Form.Label>
-                                <Form.Control name="name" onChange={this.oninput} placeholder="กรุณากรอกชื่อภาษาไทย" />
-                            </Form.Group>
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>นามสกุล (ภาษาไทย)</Form.Label>
-                                <Form.Control name="last_name" onChange={this.oninput} placeholder="กรุณากรอกนามสกุลภาษาไทย" />
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Row>
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>ชื่อ (ภาษาอังกฤษ)</Form.Label>
-                                <Form.Control name="name_eng" onChange={this.oninput} placeholder="กรุณากรอกชื่อภาษาอังกฤษ" />
-                            </Form.Group>
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>ยืนยันรหัสผ่าน</Form.Label>
+                            <Form.Control name="con_password" onChange={this.oninput} type="password" placeholder="ยืนยันรหัสผ่าน" />
+                        </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>ชื่อ (ภาษาไทย)</Form.Label>
+                            <Form.Control name="name" onChange={this.oninput} placeholder="กรุณากรอกชื่อภาษาไทย" />
+                        </Form.Group>
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>นามสกุล (ภาษาไทย)</Form.Label>
+                            <Form.Control name="last_name" onChange={this.oninput} placeholder="กรุณากรอกนามสกุลภาษาไทย" />
+                        </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>ชื่อ (ภาษาอังกฤษ)</Form.Label>
+                            <Form.Control name="name_eng" onChange={this.oninput} placeholder="กรุณากรอกชื่อภาษาอังกฤษ" />
+                        </Form.Group>
 
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>นามสกุล (ภาษาอังกฤษ)</Form.Label>
-                                <Form.Control name="last_name_eng" onChange={this.oninput} placeholder="กรุณากรอกนามสกุลภาษาอังกฤษ" />
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Row>
-                            <Form.Group as={Col} >
-                                <div>
-                                    {/* {selectedDay && <p>Day: {selectedDay.toLocaleDateString()}</p>}
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>นามสกุล (ภาษาอังกฤษ)</Form.Label>
+                            <Form.Control name="last_name_eng" onChange={this.oninput} placeholder="กรุณากรอกนามสกุลภาษาอังกฤษ" />
+                        </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                        <Form.Group as={Col} >
+                            <div>
+                                {/* {selectedDay && <p>Day: {selectedDay.toLocaleDateString()}</p>}
                                     {!selectedDay && <p>Choose a day</p>} */}
-                                    {/* <DayPickerInput
+                                {/* <DayPickerInput
                                         localeUtils={MomentLocaleUtils} locale={this.state.locale}
                                         onDayChange={this.handleDayChange} /> */}
-                                </div>
-                                {/* <input className="input-medium" type="text" data-provide="datepicker"></input> */}
-                                {/* <input type="date" data-date-language="th-th" ></input> */}
-                                <Form.Label style={{ float: 'left' }}>วัน/เดือน/ปี เกิด</Form.Label>
-                                <Form.Control name="dob" onChange={this.oninput} placeholder="2540/10/24" />
-                            </Form.Group>
-
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>ประเภท</Form.Label>
-                                <Form.Control name="gender" onChange={this.ondropdown2} as="select">
-                                    <option value="0" disabled selected hidden>กรุณาเลือกเพศ</option>
-                                    <option value="1">ชาย</option>
-                                    <option value="2">หญิง</option>
-                                    <option value="3">ไม่ระบุเพศ</option>
-                                </Form.Control>
-
-                            </Form.Group>
-
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>เลขบัตรประชาชน</Form.Label>
-                                <Form.Control name="personal_id" onChange={this.oninput} placeholder="กรุณากรอกเลขประจำตัวประชาชน" />
-                            </Form.Group>
-                        </Form.Row>
-
-                        <Form.Group >
-                            <Form.Label style={{ float: 'left' }}>ที่อยู่</Form.Label>
-                            <Form.Control name="address" onChange={this.oninput} placeholder="กรุณากรอกที่อยู่" />
+                            </div>
+                            {/* <input className="input-medium" type="text" data-provide="datepicker"></input> */}
+                            {/* <input type="date" data-date-language="th-th" ></input> */}
+                            <Form.Label style={{ float: 'left' }}>วัน/เดือน/ปี เกิด</Form.Label>
+                            <Form.Control name="dob" onChange={this.oninput} placeholder="2540/10/24" />
                         </Form.Group>
-                        <Form.Row>
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>อีเมล</Form.Label>
-                                <Form.Control name="email" onChange={this.oninput} placeholder="example@example.com" />
-                            </Form.Group>
 
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>ประเภท</Form.Label>
-                                <Form.Control name="user_type" onChange={this.ondropdown} as="select">
-                                    <option value="0" disabled selected hidden>กรุณาเลือกประเภทผู้ใช้งาน</option>
-                                    <option value="1">ผู้ประกอบการ</option>
-                                    <option value="2">พนักงาน</option>
-                                    <option value="3">สมาชิก</option>
-                                    <option value="4">เทรนเนอร์</option>
-                                </Form.Control>
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>ประเภท</Form.Label>
+                            <Form.Control name="gender" onChange={this.ondropdown2} as="select">
+                                <option value="0" disabled selected hidden>กรุณาเลือกเพศ</option>
+                                <option value="1">ชาย</option>
+                                <option value="2">หญิง</option>
+                                <option value="3">ไม่ระบุเพศ</option>
+                            </Form.Control>
 
-                            </Form.Group>
+                        </Form.Group>
 
-                            <Form.Group as={Col} >
-                                <Form.Label style={{ float: 'left' }}>เบอร์โทรศัพท์</Form.Label>
-                                <Form.Control name="phone_number" onChange={this.oninput} placeholder="กรุณากรอกเบอร์โทรศัพท์" />
-                            </Form.Group>
-                        </Form.Row>
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>เลขบัตรประชาชน</Form.Label>
+                            <Form.Control name="personal_id" onChange={this.oninput} placeholder="กรุณากรอกเลขประจำตัวประชาชน" />
+                        </Form.Group>
+                    </Form.Row>
+
+                    <Form.Group >
+                        <Form.Label style={{ float: 'left' }}>ที่อยู่</Form.Label>
+                        <Form.Control name="address" onChange={this.oninput} placeholder="กรุณากรอกที่อยู่" />
+                    </Form.Group>
+                    <Form.Row>
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>อีเมล</Form.Label>
+                            <Form.Control name="email" onChange={this.oninput} placeholder="example@example.com" />
+                        </Form.Group>
+
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>ประเภท</Form.Label>
+                            <Form.Control name="user_type" onChange={this.ondropdown} as="select">
+                                <option value="0" disabled selected hidden>กรุณาเลือกประเภทผู้ใช้งาน</option>
+                                <option value="1">ผู้ประกอบการ</option>
+                                <option value="2">พนักงาน</option>
+                                <option value="3">สมาชิก</option>
+                                <option value="4">เทรนเนอร์</option>
+                            </Form.Control>
+
+                        </Form.Group>
+
+                        <Form.Group as={Col} >
+                            <Form.Label style={{ float: 'left' }}>เบอร์โทรศัพท์</Form.Label>
+                            <Form.Control name="phone_number" onChange={this.oninput} placeholder="กรุณากรอกเบอร์โทรศัพท์" />
+                        </Form.Group>
+                    </Form.Row>
 
 
 
-                        <Button variant="primary" type="submit" onClick={this.handleSubmit}>ยืนยัน</Button>
-                        <NavLink to="/homereal"><Button variant="primary" type="cancle">ยกเลิก</Button></NavLink>
-                    </Form>
+                    <Button variant="primary" type="submit" onClick={this.handleSubmit}>ยืนยัน</Button>
+                    <NavLink to="/homereal"><Button variant="primary" type="cancle">ยกเลิก</Button></NavLink>
+                    {/* </Form> */}
                 </Card.Body>
 
             </Card></div>

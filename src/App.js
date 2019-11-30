@@ -33,15 +33,17 @@ import add_income from './page/add_income'
 import check_income from './page/check_income'
 import edit_income from './page/edit_income'
 import sell_course from './sell/sell_course'
+import {user_token} from './support/Constance'
+
 
 
 class App extends Component {
   render() {
     return (
       <div>
-        <div >
+        {/* <div > */}
           <SingnedInLinks />
-        </div>
+        {/* </div> */}
         <Router exact path='/'>
           <Route exact path='/homereal' component={homereal} />
           <Route exact path='/' component={loginform} />
@@ -75,7 +77,6 @@ class App extends Component {
           <Route exact path='/edit_income' component={edit_income}/>
           <Route exact path='/sell_course' component={sell_course}/>
         </Router>
-        {/* <Detail_bill/> */}
       </div>
       
 
