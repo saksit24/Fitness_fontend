@@ -79,6 +79,8 @@ class SingnedInLinks extends Component {
                                         <button className="dropbtn">รายรับ-รายจ่าย<MDBIcon icon="angle-down" /></button>
                                         <div className="dropdown-content">
                                             <a href="/bill">ตรวจสอบใบเสร็จ</a>
+                                            <a href="/add_income">เพิ่มรายรับ-รายจ่ายเพิ่มเติม</a>
+                                            <a href="/check_income">ตรวจสอบรายจ่ายเพิ่มเติม</a>
                                             <a href="/Income">สถิติรายรับ-รายจ่าย</a>
                                         </div>
                                     </div>
@@ -88,7 +90,6 @@ class SingnedInLinks extends Component {
                             </Navbar.Collapse>
                         </Navbar>
                     </div>
-
                 break;
 
             case "2":

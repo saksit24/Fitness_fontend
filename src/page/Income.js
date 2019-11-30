@@ -1,76 +1,136 @@
-import React from "react";
-import { Line } from "react-chartjs-2";
-import { MDBContainer } from "mdbreact";
+import React, { Component, useState } from 'react';
+import DatePicker from "react-datepicker";
+import { NavLink } from 'react-router-dom';
+import moment from 'moment'
+import { get, ip, post } from '../service/service'
 
-class ChartsPage extends React.Component {
-  state = {
-    dataLine: {
-        labels: ["11.00-12.00", "12.01-13.00", "14.01-15.00", "15.01-16.00","17.01-18.00","18.01-19.00","19.01-20.00","20.01-21.00","21.01-22.00",],
-      datasets: [
-        {
-          label: "รายรับ",
-          fill: true,
-          lineTension: 0.3,
-          backgroundColor: "rgba(255, 218, 128,0.4)",
-          borderColor: "rgba(255, 218, 128, 1)",
-          borderCapStyle: "butt",
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: "miter",
-          pointBorderColor: "rgba( 255, 140, 0, 1 )",
-          pointBackgroundColor: "rgb(255, 255, 255)",
-          pointBorderWidth: 10,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgb(0, 0, 0)",
-          pointHoverBorderColor: "rgba(220, 220, 220,1)",
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          data: [650, 590, 800, 810, 560, 550, 400,1000,1200]
-        },
-        {
-          label: "รายจ่าย",
-          fill: true,
-          lineTension: 0.3,
-          backgroundColor: "RGBA( 211, 211, 211, 1 )",
-          borderColor: "RGBA( 119, 136, 153, 1 )",
-          borderCapStyle: "butt",
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: "miter",
-          pointBorderColor: "rgb(35, 26, 136)",
-          pointBackgroundColor: "rgb(255, 255, 255)",
-          pointBorderWidth: 10,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgb(0, 0, 0)",
-          pointHoverBorderColor: "rgba(220, 220, 220, 1)",
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          data: [1000, 200, 0, 0, 0, 0, 0,0,0]
-        }
-      ]
+import "react-datepicker/dist/react-datepicker.css";
+
+class income extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      startDate: '',
+      endDate: '',
+      income:''
+      // date:''
+      // endDate: (this.state.d).setMonth((this.state.d).getMonth()+1)
+
     }
+  }
+
+
+  handleChange = date => {
+    this.setState({
+      startDate: date
+    });
   };
+
+  handleChange2 = date => {
+    this.setState({
+      endDate: date
+    });
+  };
+
+  componentWillMount(){
+    this.get_income()
+  }
+
+  get_income = async () => {
+    try {
+        await get('product/get_income', null).then((result) => {
+            if (result.success) {
+                this.setState({
+                    income: result.result,
+                    // search_promotion: result.result
+
+                })
+                setTimeout(() => {
+                    console.log("income", result.result)
+                }, 500)
+            } else {
+                window.location.href = "/";
+                //alert("user1"+result.error_message);
+            }
+        });
+    } catch (error) {
+        alert(error);
+    }
+}
+
+
+
 
   render() {
     return (
-        <div>
-      <MDBContainer>
-        <h3 className="mt-5">บัญชีรายรับรายจ่าย ของวันที่ </h3>
-        <Line data={this.state.dataLine} options={{ responsive: true }} />
-      </MDBContainer>
-      
-      <h4 className="mt-5">รวมรายได้ = 11,560 </h4>
-      <h4 className="mt-5">รวมรายจ่าย =  1,200</h4>
-      <h4 className="mt-5">กำไร =  10,360</h4>
-      
-      
-      
-    
-    </div>
+      <div>
+
+        <div style={{
+          display: 'flex',
+          width: "100%",
+          marginTop: 10,
+          justifyContent: "center"
+        }} >
+          <table>
+            <tr>
+              <td>
+
+                เลือกวันที่  
+                <DatePicker
+                  selected={this.state.startDate}
+                  onChange={this.handleChange} //only when value has changed
+                  dateFormat='d/M/y'
+                  selectsStart
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  showYearDropdown
+                  showMonthDropdown
+                  isClearable
+                />
+                ถึงวันที่   
+                <DatePicker
+                  selected={this.state.endDate}
+                  onChange={this.handleChange2} //only when value has changed
+                  dateFormat='d/M/y'
+                  endDate={this.state.endDate}
+                  minDate={this.state.startDate}
+                  selectsEnd
+                  showYearDropdown
+                  showMonthDropdown
+                  isClearable
+
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <table style={{ border: "1px solid #ccc" }} >
+          <tr style={{ border: "1px solid #ccc" }} >
+            <th>วันที่</th>
+            <th>รายรับ</th>
+            <th>รายจ่าย</th>
+            <th>คงเหลือ</th>
+          </tr>
+          <tr style={{ border: "1px solid #ccc" }}>
+            <td>{moment().format('l')}</td>
+            <td>111</td>
+            <td style={{ textAlign: "left" }}>22</td>
+            <td>333</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <th>รวม</th>
+            <td>100</td>
+          </tr>
+
+        </table>
+      </div>
+
+
+
     );
   }
 }
 
-export default ChartsPage;
+export default income;

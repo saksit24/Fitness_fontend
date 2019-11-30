@@ -71,12 +71,6 @@ class Home extends Component {
     })
   }
 
-  get_personal = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    })
-  }
-
   // addproduct = (add) => {
   //   this.setState({
   //     add: this.state.add + this.state.quantity
@@ -279,11 +273,6 @@ class Home extends Component {
             <tr style={{ border: "1px solid #000" }}>
               <th style={{ border: "1px solid #000" }}>จำนวนเงินทอน</th>
               <th style={{ border: "1px solid #000" }}>{this.state.getmoney - this.sum_data(this.state.show_addtocart) >= 0 ? this.state.getmoney - this.sum_data(this.state.show_addtocart) : "จำนวนเงินไม่เพียงพอ"} บาท</th>
-            </tr>
-
-            <tr style={{ border: "1px solid #000" }}>
-              <th style={{ border: "1px solid #000" }}>เลขบัตรประชาชน</th>
-              <th style={{ border: "1px solid #000" }}><input type="personal_id" name="get_personal" id="get_personal" onChange={this.get_personal} /></th>
             </tr>
           </table>
         </div>

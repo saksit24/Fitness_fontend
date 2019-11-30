@@ -29,6 +29,10 @@ import check_course from './chack_course'
 import update_course from './update_course'
 import Bill from './sell/bill'
 import detail_bill from './sell/detail_bill'
+import add_income from './page/add_income'
+import check_income from './page/check_income'
+import edit_income from './page/edit_income'
+import sell_course from './sell/sell_course'
 
 
 class App extends Component {
@@ -66,6 +70,10 @@ class App extends Component {
           <Route exact path='/update_course' component={update_course}/>
           <Route exact path='/bill' component={Bill}/>
           <Route exact path='/detail_bill' component={detail_bill}/>
+          <Route exact path='/add_income' component={add_income}/>
+          <Route exact path='/check_income' component={check_income}/>
+          <Route exact path='/edit_income' component={edit_income}/>
+          <Route exact path='/sell_course' component={sell_course}/>
         </Router>
         {/* <Detail_bill/> */}
       </div>
