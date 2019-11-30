@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Nav, Navbar, DropdownButton, Dropdown } from 'react-bootstrap';
-import { user_token } from '../support/Constance';
+import { user_token,user_token_decoded } from '../support/Constance';
 import { get } from '../service/service';
 import { MDBIcon } from "mdbreact"
 
@@ -15,39 +15,16 @@ class SingnedInLinks extends Component {
             isOpan: false
         };
     }
-
-    componentWillMount() {
-        this.get_user()
-    }
-
     toggleNavbar() {
         this.setState({
             isOpan: !this.state.collapsed
         });
     }
 
-    get_user = async () => {
-        try {
-            await get('user/user_valid', user_token).then((result) => {
-                if (result.success) {
-                    this.setState({
-                        get_user: result.result
-                    })
-                    setTimeout(() => {
-                        console.log("get_user", result.result)
-                    }, 500)
-                } else {
-
-                }
-            });
-        } catch (error) {
-            alert("get_user2" + error);
-        }
-    }
-
-    render_type = (user_type) => {
+    render_type = () => {
+        console.log(user_token_decoded)
         let render_user
-        switch (user_type) {
+        switch (user_token_decoded.user_type) {
             case "1":
                 render_user =
                     <div>
@@ -66,7 +43,6 @@ class SingnedInLinks extends Component {
                                             <a href="/add_course_sup">เพิ่มคอร์สเสริม</a>
                                             <a href="/chack_course">ตรวจสอบคอร์ส</a>
                                         </div>
-
                                     </div>
                                     <Nav.Link href="/show_user" >สมาชิก</Nav.Link>
                                     <Nav.Link href="/register">เพิ่มผู้ใช้</Nav.Link>
@@ -157,18 +133,9 @@ class SingnedInLinks extends Component {
 
         const loginUser = (
             <div>
-                {this.state.get_user ?
+                
+                         {this.render_type()}
 
-                    this.state.get_user.map((e, index) => {
-                        return (
-                            <div>
-                                {this.render_type(e.user_type)}
-                            </div>
-                        )
-                    }
-                    )
-
-                    : null}
             </div>
 
         )

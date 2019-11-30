@@ -108,12 +108,11 @@ class FormExampleForm extends Component {
                     
                     <label style={{fontSize:25}} >รหัสสินค้า</label>
                     <input style={{fontSize:20}} name="code_product" onChange={this.oninput} type="text" placeholder="กรุณากรอกรหัสสินค้า"></input>
-                   
                     <label style={{fontSize:25}}>ชื่อสินค้า</label>
                     <input style={{fontSize:20}} name="name_product" onChange={this.oninput} type="text" placeholder="กรุณากรอกชื่อสินค้า"></input>
-                    <label style={{fontSize:25}}>ราคาทุน</label>
+                    <label style={{fontSize:25}}>ราคาทุน(ทั้งหมด)</label>
                     <input style={{fontSize:20}} name="capital_price_product" onChange={this.oninput} type="text" placeholder="กรุณากรอกราคาทุน"></input>
-                    <label style={{fontSize:25}}>ราคาขาย</label>
+                    <label style={{fontSize:25}}>ราคาขาย/ชิ้น</label>
                     <input style={{fontSize:20}} name="price_product" onChange={this.oninput} type="text" placeholder="กรุณากรอกราคาขาย"></input>
                     <label style={{fontSize:25}}>จำนวน</label>
                     <input style={{fontSize:20}} name="stock_product" onChange={this.oninput} type="text" placeholder="กรุณากรอกจำนวน"></input>
