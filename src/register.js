@@ -49,7 +49,6 @@ class register extends Component {
 
     register = async () => {
         let object = {
-            id_product: null,
             user: this.state.user,
             name: this.state.name,
             last_name: this.state.last_name,
@@ -68,11 +67,11 @@ class register extends Component {
         console.log('test', object)
         try {
             await post(object, "user/register", user_token).then(result => {
-                console.log("product", result);
+                console.log("regis", result);
                 if (result.success) {
 
                     swal("สมัครสมาชิกเรียบร้อย", "", "success");
-                    // setTimeout(() => { window.location.href = "/register" }, 1000)
+                    setTimeout(() => { window.location.href = "/register" }, 1000)
 
                 } else {
                     alert('error ' + result.error_message);
@@ -81,7 +80,6 @@ class register extends Component {
         } catch (error) {
             alert('error : ' + error);
         }
-        console.log("Signup" + this.state);
     }
 
     oninput = (event) => {

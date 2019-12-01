@@ -21,7 +21,7 @@ class Home extends Component {
             show_addtocart: [],
             getmoney: 0,
             data_product: [],
-            check: [],
+            check: '',
             search_product: [],
             name_product: '',
             delete_id: null,
@@ -44,7 +44,8 @@ class Home extends Component {
             personal_id: '',
             get_product: null,
             isInEdit: false,
-            name:'',
+            name: '',
+            last_name: '',
             // get_quantity:"",
             default_user_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2S47oPrtWI_lK68iwye6EW3Q9GMRPoCQPw4vlObBssUl355pLMg"
         };
@@ -72,7 +73,7 @@ class Home extends Component {
     get_money = (e) => {
         this.setState({
             [e.target.id]: e.target.value
-        })  
+        })
     }
 
     get_personal = (e) => {
@@ -128,16 +129,17 @@ class Home extends Component {
     }
 
 
-    slip_product = async () => {
+    slip_course = async () => {
         let object = {
             order: this.state.show_addtocart,
             sum_price_product: this.sum_data(this.state.show_addtocart),
             get_price_product: this.state.getmoney,
-            change_price_product: this.state.getmoney - this.sum_data(this.state.show_addtocart)
+            change_price_product: this.state.getmoney - this.sum_data(this.state.show_addtocart),
+            personal_id: this.state.personal_id
         };
         console.log("product", object);
         try {
-            await post(object, "product/slip_product", user_token).then(result => {
+            await post(object, "product/slip_course", user_token).then(result => {
                 // console.log("product", result);
 
                 if (result.success) {
@@ -151,7 +153,7 @@ class Home extends Component {
         } catch (error) {
             alert('error', error);
         }
-        console.log("Signup" + this.state);
+        // console.log("Signup" + this.state);
     }
 
 
@@ -192,15 +194,16 @@ class Home extends Component {
     }
     componentWillMount() {
         this.get_product();
-        this.check_id();
+        // this.check_id();
     }
 
     onsave = () => {
         if (this.state.getmoney < this.sum_data(this.state.show_addtocart) || this.state.getmoney === 0) {
             swal("กรุณากรอกจำนวนให้เงินเพียงพอ", "", "error");
-        }
-        else {
-            this.slip_product()
+        } else if (!this.state.personal_id) {
+            swal('กรุณากรอกเลขบัตรประชาชน','','error')
+        } else {
+            this.slip_course()
         }
     }
 
@@ -248,7 +251,7 @@ class Home extends Component {
                             <th style={{ border: "1px solid #000" }}>ราคา</th>
                             <th style={{ border: "1px solid #000" }}>ราคารวม</th>
                             <th style={{ border: "1px solid #000" }}>หมายเหตุ</th>
-                            {console.log('hac',this.state.personal_id)}
+                            {console.log('hac', this.state.personal_id)}
                         </tr>
 
                         {
@@ -275,8 +278,9 @@ class Home extends Component {
                     <table style={{ border: "1px solid #000" }}>
                         <tr style={{ border: "1px solid #000" }}>
                             <th style={{ border: "1px solid #000" }}>เลขบัตรประชาชน</th>
-                            <th style={{ border: "1px solid #000" }}><input type="personal_id" name="personal_id" id="personal_id" onChange={this.get_personal} /></th>
-                            <th>{this.state.name ? this.state.name : 'ไม่พบผู้ใช้งาน'}</th>
+                            <th style={{ border: "1px solid #000" }}><input type="personal_id" name="personal_id" id="personal_id" onChange={this.get_personal} />
+                                <Button type='submit' onClick={this.check_id}>ตรวจสอบ</Button></th>
+                            <th>{this.state.check ? this.state.check.name + ' ' + this.state.check.last_name : 'ไม่พบผู้ใช้งาน'}</th>
                         </tr>
                         <tr style={{ border: "1px solid #000" }}>
                             <th style={{ border: "1px solid #000" }}>ราคารวมสินค้าทั้งหมด</th>
@@ -293,14 +297,14 @@ class Home extends Component {
                         <tr style={{ border: "1px solid #000" }}>
                             <th style={{ border: "1px solid #000" }}>จำนวนเงินทอน</th>
                             <th></th>
-                            <th style={{ border: "1px solid #000" }}>{this.state.getmoney - this.sum_data(this.state.show_addtocart) >= 0 ? (this.state.getmoney - this.sum_data(this.state.show_addtocart))+' บาท' : "จำนวนเงินไม่เพียงพอ"} </th>
+                            <th style={{ border: "1px solid #000" }}>{this.state.getmoney - this.sum_data(this.state.show_addtocart) >= 0 ? (this.state.getmoney - this.sum_data(this.state.show_addtocart)) + ' บาท' : "จำนวนเงินไม่เพียงพอ"} </th>
                         </tr>
                     </table>
                 </div>
                 <br />
                 <div style={fromstyle}>
                     <Button type='submit' onClick={this.onsave} >บันทึก</Button>
-                    <Button type='submit' onClick={this.onprint} >บันทึกคอร์ส</Button>
+                    {/* <Button type='submit' onClick={this.onprint} >บันทึกคอร์ส</Button> */}
                 </div>
                 <br />
             </div>
