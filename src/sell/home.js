@@ -54,7 +54,7 @@ class Home extends Component {
     )
 
 
-    swal("ลบสินค้าเรียบร้อย", "", "success");
+    // swal("ลบสินค้าเรียบร้อย", "", "success");
   }
 
   sum_data = (data) => {

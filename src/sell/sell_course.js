@@ -58,8 +58,7 @@ class Home extends Component {
             // get_quantity: this.state.get_quantity-1
         )
 
-
-        swal("ลบสินค้าเรียบร้อย", "", "success");
+        // setTimeout(() => { swal("ลบสินค้าเรียบร้อย", "", "success") }, 1000)
     }
 
     sum_data = (data) => {
@@ -135,7 +134,7 @@ class Home extends Component {
             sum_price_product: this.sum_data(this.state.show_addtocart),
             get_price_product: this.state.getmoney,
             change_price_product: this.state.getmoney - this.sum_data(this.state.show_addtocart),
-            personal_id: this.state.personal_id
+            user_id: this.state.check.user_id
         };
         console.log("product", object);
         try {
@@ -144,7 +143,7 @@ class Home extends Component {
 
                 if (result.success) {
 
-                    setTimeout(() => { window.location.href = "/home" }, 1000)
+                    setTimeout(() => { window.location.href = "/sell_course" }, 1000)
                     swal("บันทึกเรียบร้อย", "", "success");
                 } else {
                     alert('error ' + result.error_message);

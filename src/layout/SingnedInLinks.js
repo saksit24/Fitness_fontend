@@ -42,6 +42,9 @@ class SingnedInLinks extends Component {
                                             <a href="/add_course">เพิ่มคอร์สหลัก</a>
                                             <a href="/add_course_sup">เพิ่มคอร์สเสริม</a>
                                             <a href="/chack_course">ตรวจสอบคอร์ส</a>
+                                            <a href="/add_promotion">เพิ่มโปรโมชั่น</a>
+
+                                            
                                         </div>
                                     </div>
                                     <Nav.Link href="/show_user" >สมาชิก</Nav.Link>
