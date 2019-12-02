@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import { get, post } from '../service/service';
 import swal from 'sweetalert';
-import {user_token} from '../support/Constance'
+import { user_token } from '../support/Constance'
 
 
 class LoginForm extends React.Component {
@@ -15,8 +15,8 @@ class LoginForm extends React.Component {
     }
   }
 
-  componentWillMount(){
-    if(user_token){
+  componentWillMount() {
+    if (user_token) {
       this.props.history.push('/homereal')
     }
   }
@@ -45,13 +45,13 @@ class LoginForm extends React.Component {
           window.location.href = "/homereal";
           console.log("Signin" + res.token);
         } else {
-          swal(res.error_message,"", "error");
-          
+          swal(res.error_message, "", "error");
+
         }
       });
     } catch (error) {
-      swal(error,"", "error");
-      
+      alert("error : " + error);
+
     }
     console.log("Signin" + this.state);
   }
@@ -70,8 +70,8 @@ class LoginForm extends React.Component {
 
                   <div className="control">
                     <input className="input" placeholder="Username" type="user" name="user" onChange={this.handleChange} />
-                    {console.log('check',this.state.user)}
-                    {console.log('check',this.state.password)}
+                    {console.log('check', this.state.user)}
+                    {console.log('check', this.state.password)}
                   </div>
                 </div>
 
@@ -79,7 +79,7 @@ class LoginForm extends React.Component {
                 <div className="field">
 
                   <div className="control">
-                    <input className="input" placeholder="Password" type="password" p_name="password" name="password" onChange={this.handleChange}/>
+                    <input className="input" placeholder="Password" type="password" p_name="password" name="password" onChange={this.handleChange} />
                   </div>
                 </div>
 
