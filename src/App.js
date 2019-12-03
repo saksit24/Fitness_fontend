@@ -35,6 +35,7 @@ import edit_income from './page/edit_income'
 import sell_course from './sell/sell_course'
 import {user_token} from './support/Constance'
 import tap_product from './tap_add_product'
+import Test_hc from './page/test_hc'
 
 
 class App extends Component {
@@ -77,8 +78,6 @@ class App extends Component {
           <Route exact path='/edit_income' component={edit_income}/>
           <Route exact path='/sell_course' component={sell_course}/>
           <Route exact path='/tap_product' component={tap_product}/>
-
-
         </Router>
       </div>
       

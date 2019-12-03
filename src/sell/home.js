@@ -130,7 +130,7 @@ class Home extends Component {
         // console.log("product", result);
 
         if (result.success) {
-          
+
           setTimeout(() => { window.location.href = "/home" }, 1000)
           swal("บันทึกเรียบร้อย", "", "success");
         } else {
@@ -143,7 +143,7 @@ class Home extends Component {
     console.log("Signup" + this.state);
   }
 
-  
+
   handleChange_quantity = (event) => {
     let show_addtocart = this.state.show_addtocart
     show_addtocart[event.target.name].get_quantity = parseInt(event.target.value)
@@ -191,7 +191,7 @@ class Home extends Component {
       this.slip_product()
     }
   }
-  
+
   onprint = () => {
 
     swal("บันทึกแและพิมพ์เรียบร้อย", "", "success");

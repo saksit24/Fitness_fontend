@@ -1,12 +1,12 @@
 //export const ip = "http://192.168.1.38:3003/api/v1/"
 // export const ip = "http://192.168.43.57:3003/api/v1/"
-export const ip = "http://127.0.0.1:3003/api/v1/"
-// export const ip = "http://142.4.201.250:3003/api/v1/"
+//export const ip = "http://127.0.0.1:3003/api/v1/"
+export const ip = "http://142.4.201.250:3003/api/v1/"
 
 
-export const get = (path,token) => new Promise((resolve,reject) => {
-    fetch (ip + path, {
-        method : 'GET',
+export const get = (path, token) => new Promise((resolve, reject) => {
+    fetch(ip + path, {
+        method: 'GET',
         headers: {
             'Authorization': token,
             'Accept': 'application/json',
@@ -20,9 +20,9 @@ export const get = (path,token) => new Promise((resolve,reject) => {
     }).catch((err) => reject(err))
 })
 
-export const post = (object,path,token) => new Promise((resolve,reject) => {
-    fetch (ip + path, {
-        method : 'POST',
+export const post = (object, path, token) => new Promise((resolve, reject) => {
+    fetch(ip + path, {
+        method: 'POST',
         headers: {
             'Authorization': token,
             'Accept': 'application/json',
