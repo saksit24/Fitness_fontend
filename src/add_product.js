@@ -33,6 +33,7 @@ class FormExampleForm extends Component {
             code_product: this.state.code_product,
             image_product: this.state.pro_image
         };
+        
         try {
             await post(object, "product/add_product", null).then(result => {
                 console.log("product", result);
@@ -129,7 +130,27 @@ class FormExampleForm extends Component {
                         </div>
                     </Tab>
                     <Tab eventKey="2" title="เพิ่มคอร์ส">
-                        aasxasx
+                    <div className="con">
+                            <label style={{ fontSize: 25 }} >ประเภท</label>
+                            <select onChange={this.ondropdown} style={{ fontSize: 20 }} >
+                                <option value="0" disabled selected hidden>กรุณาเลือกประเภท</option>
+                                <option value="1">รายครั้ง</option>
+                                <option value="2">รายเดือน</option>
+                                <option value="3">รายปี</option>
+                                
+                            </select>
+
+                            <label style={{ fontSize: 25 }}>ราคาทุน(ทั้งหมด)</label>
+                            <input style={{ fontSize: 20 }} name="capital_price_product" onChange={this.oninput} type="text" placeholder="ถ้าไม่มีกรุณาใส่เครื่องหมาย - "></input>
+                            <label style={{ fontSize: 25 }}>ราคาขาย/ชิ้น</label>
+                            <input style={{ fontSize: 20 }} name="price_product" onChange={this.oninput} type="text" placeholder="กรุณากรอกราคาขาย"></input>
+                            
+                        
+                        </div>
+                        <div >
+
+                            <button className="btn-group" onClick={this.add_product}>เพิ่มคอร์ส</button>
+                        </div>
                 </Tab>
                 </Tabs>
             </div>

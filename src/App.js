@@ -36,6 +36,7 @@ import sell_course from './sell/sell_course'
 import {user_token} from './support/Constance'
 import tap_product from './tap_add_product'
 import Test_hc from './page/test_hc'
+import Pdf_bill from './pdf/pdf_bill'
 
 
 class App extends Component {
@@ -81,7 +82,6 @@ class App extends Component {
         </Router>
       </div>
       
-
     )
   }
 }
