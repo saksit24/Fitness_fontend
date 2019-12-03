@@ -103,7 +103,7 @@ class add_course_sup extends Component {
                         <option value="4">วันพุธ</option>
                         <option value="5">วันพฤหัสบดี</option>
                         <option value="6">วันศุกร์</option>
-                        <option value="7">วันเสาร์4555</option>
+                        <option value="7">วันเสาร์</option>
 
                     </select>
 

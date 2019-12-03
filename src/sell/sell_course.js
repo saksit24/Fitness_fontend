@@ -165,9 +165,6 @@ class Home extends Component {
         })
     }
 
-
-
-
     addproducttocart = (addtocart) => {
         let cart_data = this.state.show_addtocart
         let index = cart_data.findIndex((el) => el.code_product === addtocart.code_product)
@@ -200,7 +197,7 @@ class Home extends Component {
         if (this.state.getmoney < this.sum_data(this.state.show_addtocart) || this.state.getmoney === 0) {
             swal("กรุณากรอกจำนวนให้เงินเพียงพอ", "", "error");
         } else if (!this.state.personal_id) {
-            swal('กรุณากรอกเลขบัตรประชาชน','','error')
+            swal('กรุณากรอกเลขบัตรประชาชน', '', 'error')
         } else {
             this.slip_course()
         }
@@ -277,7 +274,7 @@ class Home extends Component {
                     <table style={{ border: "1px solid #000" }}>
                         <tr style={{ border: "1px solid #000" }}>
                             <th style={{ border: "1px solid #000" }}>เลขบัตรประชาชน</th>
-                            <th style={{ border: "1px solid #000" }}><input type="personal_id" name="personal_id" id="personal_id" onChange={this.get_personal} />
+                            <th style={{ border: "1px solid #000" }}><input maxLength="13" type="personal_id" name="personal_id" id="personal_id" onChange={this.get_personal} />
                                 <Button type='submit' onClick={this.check_id}>ตรวจสอบ</Button></th>
                             <th>{this.state.check ? this.state.check.name + ' ' + this.state.check.last_name : 'ไม่พบผู้ใช้งาน'}</th>
                         </tr>
