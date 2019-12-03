@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9675ebed.chunk.css",
+    "main.js": "/static/js/main.435f58d0.chunk.js",
+    "main.js.map": "/static/js/main.435f58d0.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.de69ef19.js",
+    "runtime~main.js.map": "/static/js/runtime~main.de69ef19.js.map",
+    "static/css/2.c49ab256.chunk.css": "/static/css/2.c49ab256.chunk.css",
+    "static/js/2.c40fa923.chunk.js": "/static/js/2.c40fa923.chunk.js",
+    "static/js/2.c40fa923.chunk.js.map": "/static/js/2.c40fa923.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.89c95c5b7e2a1c5bdee275c167a247e0.js": "/precache-manifest.89c95c5b7e2a1c5bdee275c167a247e0.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.c49ab256.chunk.css.map": "/static/css/2.c49ab256.chunk.css.map",
+    "static/css/main.9675ebed.chunk.css.map": "/static/css/main.9675ebed.chunk.css.map",
+    "static/media/mdb.css": "/static/media/arrow_right.8ef6a08c.svg",
+    "static/media/bghome-1.jpg": "/static/media/bghome-1.e74a04d1.jpg",
+    "static/media/App.css": "/static/media/blackground6f.fb1c5881.jpg",
+    "static/media/all.min.css": "/static/media/fa-solid-900.d6d8d5da.woff2",
+    "static/media/index.css": "/static/media/printable4u_regular_ver_1.00-webfont.a6c2b8c0.woff2"
+  }
+}
