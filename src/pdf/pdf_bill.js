@@ -31,7 +31,7 @@ class test00 extends Component {
                     fontSize: 20
                 },
                 {
-                    text: 'เล่มที่   1             เลขที่    20',
+                    text: 'เล่มที่                เลขที่    ',
                     style: 'header',
                     alignment: 'right',
                     fontSize: 15
@@ -68,7 +68,7 @@ class test00 extends Component {
                 },
                 '\n',
                 {
-                    text: 'ชื่อผู้ซื้อ นายศักดิ์สิทธิ์ แท่งทอง',
+                    text: 'ชื่อผู้ซื้อ..........................',
                     style: 'subheader',
                     alignment: 'left',
                     fontSize: 15,
@@ -129,7 +129,9 @@ class test00 extends Component {
     render() {
         return (
 
-            <div onClick={() => { this.printPDF() }}>hhhhhh</div>
+            <div >
+                <button className="btn-group" onClick={() => { this.printPDF() }}>PDF</button>
+            </div>
 
         )
 
