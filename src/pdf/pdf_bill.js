@@ -7,9 +7,9 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 pdfMake.fonts = {
     THSarabunNew: {
         normal: 'THSarabunNew.ttf',
-        bold: 'THSarabunNew-Bold.ttf',
-        italics: 'THSarabunNew-Italic.ttf',
-        bolditalics: 'THSarabunNew-BoldItalic.ttf'
+        bold: 'THSarabunNew Bold.ttf',
+        italics: 'THSarabunNew Italic.ttf',
+        bolditalics: 'THSarabunNew BoldItalic.ttf'
     },
     Roboto: {
         normal: 'Roboto-Regular.ttf',
@@ -132,8 +132,8 @@ class test00 extends Component {
             <div onClick={() => { this.printPDF() }}>hhhhhh</div>
 
         )
-    }
 
+    }
 
 }
 export default test00;
