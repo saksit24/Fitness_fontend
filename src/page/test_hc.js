@@ -10,6 +10,33 @@ Highcharts.setOptions({
 
 class test_hc extends Component {
 
+  componentWillMount() {
+    this.get_plant()
+  }
+
+  get_people = async () => {
+    try {
+      await get('', user_token).then((result) => {
+        if (result.success) {
+          this.setState({
+            // se_name: result.result[0].se_name,
+            // plants: result.result[0].plant,
+            // data_month: result.result[0].plant[0].data
+
+          })
+          console.log('get_people', result.result[0])
+        }
+        else {
+          alert(result.error_message)
+        }
+      })
+
+    } catch (error) {
+      alert('get_people: ' + error)
+
+    }
+  }
+
   render() {
     var options = {
 
@@ -25,7 +52,7 @@ class test_hc extends Component {
       },
 
       xAxis: {
-        categories: ['12.00-13.00','13.00-14.00', '14.00-15.00', '15.00-16.00', '16.00-17.00', '17.00-18.00', '18.00-19.00', '19.00-20.00', '20.00-21.00', '21.00-22.00', '22.00-23.00', '23.00-0.00']
+        categories: ['12.00-13.00', '13.00-14.00', '14.00-15.00', '15.00-16.00', '16.00-17.00', '17.00-18.00', '18.00-19.00', '19.00-20.00', '20.00-21.00', '21.00-22.00', '22.00-23.00', '23.00-0.00']
       },
 
       yAxis: {
@@ -79,7 +106,7 @@ class test_hc extends Component {
     return (
       <div>
         <HighchartsReact highcharts={Highcharts} options={options} />
-        
+
       </div>
     );
   }
