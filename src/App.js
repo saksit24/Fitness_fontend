@@ -37,6 +37,8 @@ import {user_token} from './support/Constance'
 import tap_product from './tap_add_product'
 import Test_hc from './page/test_hc'
 import Pdf_bill from './pdf/pdf_bill'
+import Test_pdf from './pdf/test_pdf'
+ 
 
 
 class App extends Component {
@@ -81,7 +83,7 @@ class App extends Component {
       //     <Route exact path='/tap_product' component={tap_product}/>
       //   </Router>
       // </div>
-      <Pdf_bill/>
+      <Test_hc/>
     )
   }
 }

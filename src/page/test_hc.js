@@ -1,67 +1,87 @@
-import React from "react";
-import Highcharts from "highcharts";
+import React, { Component } from 'react';
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 
-
-export default class HighchartsReact extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.container = React.createRef();
+Highcharts.setOptions({
+  lang: {
+    thousandsSep: ','
   }
+});
 
-  createChart() {
-    const props = this.props;
-    const H = props.highcharts || Highcharts;
-    const constructorType = props.constructorType || "chart";
-
-    if (!H) {
-      console.warn('The "highcharts" property was not passed.');
-    } else if (!H[constructorType]) {
-      console.warn('The "constructorType" property is incorrect or some ' +
-        'required module is not imported.');
-    } else if (!props.options) {
-      console.warn('The "options" property was not passed.');
-    } else {
-      // Create a chart
-      this.chart = H[constructorType](
-        this.container.current,
-        props.options,
-        props.callback ? props.callback : undefined
-      );
-    }
-  }
-
-  componentDidMount() {
-    this.createChart();
-  }
-
-  componentDidUpdate() {
-    const props = this.props;
-
-    if (props.allowChartUpdate !== false) {
-      if (!props.immutable && this.chart) {
-        this.chart.update(
-          props.options,
-          ...(props.updateArgs || [true, true])
-        );
-      } else {
-        this.createChart();
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    // Destroy chart
-    if (this.chart) {
-      this.chart.destroy();
-      this.chart = null;
-    }
-  }
+class test_hc extends Component {
 
   render() {
-    // Create container for the chart
-    return React.createElement(
-      "div",
-      { ...this.props.containerProps, ref: this.container }
+    var options = {
+
+      title: {
+        text: 'ทดสอบๆ',
+        style: {
+          fontSize: '24px',
+          fontFamily: 'printable4uregular'
+        }
+      },
+      credits: {
+        enabled: false
+      },
+
+      xAxis: {
+        categories: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']
+      },
+
+      yAxis: {
+        type: 'logarithmic',
+        // minorTickInterval: 10
+        title: {
+          text: '<span style="font-size:15px;">จำนวน (คน)</span>',
+          style: {
+            fontSize: '20px',
+            fontFamily: 'printable4uregular'
+          }
+        }
+      },
+      plotOptions: {
+        series: {
+          borderWidth: 0,
+          dataLabels: {
+            enabled: true,
+            // format: '{point.y}'
+          }
+        }
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:14px">{point.key}</span><br/><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0;font-size:10px">จำนวน : </td>' +
+          '<td style="padding:0"><b>{point.y} คน </b></td></tr>',
+        footerFormat: '</table>',
+      },
+      series: [{
+        type: 'column',
+        colorByPoint: true,
+        data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
+        showInLegend: false,
+        labels: {
+          enabled: true,
+          rotation: 0,
+          color: '{series.color}',
+          align: 'center',
+          format: '(point.y)}', // one decimal
+          y: 10, // 10 pixels down from the top
+          style: {
+            fontSize: '20px',
+            fontFamily: 'printable4uregular'
+
+          }
+        }
+      }],
+
+
+    }
+    return (
+      <div>
+        <HighchartsReact highcharts={Highcharts} options={options} />
+      </div>
     );
   }
 }
+
+export default test_hc;
