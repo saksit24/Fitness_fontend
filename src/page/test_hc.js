@@ -25,7 +25,7 @@ class test_hc extends Component {
       },
 
       xAxis: {
-        categories: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']
+        categories: ['12.00-13.00','13.00-14.00', '14.00-15.00', '15.00-16.00', '16.00-17.00', '17.00-18.00', '18.00-19.00', '19.00-20.00', '20.00-21.00', '21.00-22.00', '22.00-23.00', '23.00-0.00']
       },
 
       yAxis: {
@@ -79,6 +79,7 @@ class test_hc extends Component {
     return (
       <div>
         <HighchartsReact highcharts={Highcharts} options={options} />
+        
       </div>
     );
   }
