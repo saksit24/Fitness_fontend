@@ -9,10 +9,6 @@ import { MDBIcon } from "mdbreact"
 import swal from 'sweetalert';
 import { user_token } from '../support/Constance';
 
-
-const value_product = [];
-const value_product_ = []
-
 class Home extends Component {
   constructor(props) {
     super(props);

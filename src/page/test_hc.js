@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
+import { get } from '../service/service';
+import moment from 'moment'
+
 
 Highcharts.setOptions({
   lang: {
@@ -10,21 +13,26 @@ Highcharts.setOptions({
 
 class test_hc extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      data_people: null
+    }
+  }
+
   componentWillMount() {
-    this.get_plant()
+    this.get_people()
   }
 
   get_people = async () => {
     try {
-      await get('', user_token).then((result) => {
+      await get('user/get_access', null).then((result) => {
         if (result.success) {
           this.setState({
-            // se_name: result.result[0].se_name,
-            // plants: result.result[0].plant,
-            // data_month: result.result[0].plant[0].data
-
+            data_people: result.result
+          
           })
-          console.log('get_people', result.result[0])
+          console.log('get_people', result.result)
         }
         else {
           alert(result.error_message)
@@ -105,7 +113,11 @@ class test_hc extends Component {
     }
     return (
       <div>
-        <HighchartsReact highcharts={Highcharts} options={options} />
+        
+        <div>
+          <HighchartsReact highcharts={Highcharts} options={options} />
+        </div>
+
 
       </div>
     );
