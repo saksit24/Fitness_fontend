@@ -44,46 +44,46 @@ import Test_pdf from './pdf/test_pdf'
 class App extends Component {
   render() {
     return (
-      // <div>
-      //   {/* <div > */}
-      //     <SingnedInLinks />
-      //   {/* </div> */}
-      //   <Router exact path='/'>
-      //     <Route exact path='/homereal' component={homereal} />
-      //     <Route exact path='/' component={loginform} />
-      //     <Route exact path='/home' component={Home} />
-      //     <Route exact path='/user' component={User} />
-      //     <Route exact path='/add_product' component={Add_product} />
-      //     <Route exact path='/show_product' component={Show_product} />
-      //     <Route exact path='/update_product' component={Update_product} />
-      //     <Route exact path='/update_product/:id_product' component={Update_product} />
-      //     <Route exact path='/member' component={member} />
-      //     <Route exact path='/add_promotion' component={add_promotion} />
-      //     <Route exact path='/show_promotion' component={show_promotion} />
-      //     <Route exact path='/Income' component={Income} />
-      //     <Route exact path='/StaticService' component={Static} />
-      //     <Route exact path='/edit_profile' component={Edit} />
-      //     <Route exact path='/edit_password' component={Edit_pass} />
-      //     <Route exact path='/update_promotion' component={update_promotion}/>
-      //     <Route exact path='/register' component={regster}/>
-      //     <Route exact path='/show_user' component={show_user}/>
-      //     <Route exact path='/user_valid' component={user_valid}/>
-      //     <Route exact path='/update_person' component={update_person}/>
-      //     <Route exact path='/location_gym' component={Location_Gym}/>
-      //     <Route exact path='/add_course' component={Add_course}/>
-      //     <Route exact path='/add_course_sup' component={Add_course_sup}/>
-      //     <Route exact path='/chack_course' component={check_course}/>
-      //     <Route exact path='/update_course' component={update_course}/>
-      //     <Route exact path='/bill' component={Bill}/>
-      //     <Route exact path='/detail_bill' component={detail_bill}/>
-      //     <Route exact path='/add_income' component={add_income}/>
-      //     <Route exact path='/check_income' component={check_income}/>
-      //     <Route exact path='/edit_income' component={edit_income}/>
-      //     <Route exact path='/sell_course' component={sell_course}/>
-      //     <Route exact path='/tap_product' component={tap_product}/>
-      //   </Router>
-      // </div>
-      <Test_hc/>
+      <div>
+        {/* <div > */}
+          <SingnedInLinks />
+        {/* </div> */}
+        <Router exact path='/'>
+          <Route exact path='/homereal' component={homereal} />
+          <Route exact path='/' component={loginform} />
+          <Route exact path='/home' component={Home} />
+          <Route exact path='/user' component={User} />
+          <Route exact path='/add_product' component={Add_product} />
+          <Route exact path='/show_product' component={Show_product} />
+          <Route exact path='/update_product' component={Update_product} />
+          <Route exact path='/update_product/:id_product' component={Update_product} />
+          <Route exact path='/member' component={member} />
+          <Route exact path='/add_promotion' component={add_promotion} />
+          <Route exact path='/show_promotion' component={show_promotion} />
+          <Route exact path='/Income' component={Income} />
+          <Route exact path='/StaticService' component={Static} />
+          <Route exact path='/edit_profile' component={Edit} />
+          <Route exact path='/edit_password' component={Edit_pass} />
+          <Route exact path='/update_promotion' component={update_promotion}/>
+          <Route exact path='/register' component={regster}/>
+          <Route exact path='/show_user' component={show_user}/>
+          <Route exact path='/user_valid' component={user_valid}/>
+          <Route exact path='/update_person' component={update_person}/>
+          <Route exact path='/location_gym' component={Location_Gym}/>
+          <Route exact path='/add_course' component={Add_course}/>
+          <Route exact path='/add_course_sup' component={Add_course_sup}/>
+          <Route exact path='/chack_course' component={check_course}/>
+          <Route exact path='/update_course' component={update_course}/>
+          <Route exact path='/bill' component={Bill}/>
+          <Route exact path='/detail_bill' component={detail_bill}/>
+          <Route exact path='/add_income' component={add_income}/>
+          <Route exact path='/check_income' component={check_income}/>
+          <Route exact path='/edit_income' component={edit_income}/>
+          <Route exact path='/sell_course' component={sell_course}/>
+          <Route exact path='/tap_product' component={tap_product}/>
+          <Route exact path='/test_hc' component={Test_hc}/>
+        </Router>
+      </div>
     )
   }
 }

@@ -16,7 +16,11 @@ class test_hc extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data_people: null
+      data_people: null,
+      id_access: '',
+      user_id: '',
+      date: '',
+      time: '',
     }
   }
 
@@ -30,7 +34,7 @@ class test_hc extends Component {
         if (result.success) {
           this.setState({
             data_people: result.result
-          
+
           })
           console.log('get_people', result.result)
         }
@@ -46,10 +50,12 @@ class test_hc extends Component {
   }
 
   render() {
+    const today = moment().format('LTS');
+    const to_date = moment().format("LL");
     var options = {
 
       title: {
-        text: 'ทดสอบๆ',
+        text: '',
         style: {
           fontSize: '24px',
           fontFamily: 'printable4uregular'
@@ -108,13 +114,16 @@ class test_hc extends Component {
           }
         }
       }],
-
-
     }
+
     return (
       <div>
-        
         <div>
+          <h1>{to_date}</h1>
+        </div>
+
+        <div>
+          
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
 

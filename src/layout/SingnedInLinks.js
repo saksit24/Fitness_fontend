@@ -52,7 +52,7 @@ class SingnedInLinks extends Component {
                                     {/* <Nav.Link href="/add_product">เพิ่มสินค้า</Nav.Link>
                                     <Nav.Link href="/show_product">ตรวจสอบสินค้า</Nav.Link>
                                     <Nav.Link href="/add_promotion">เพิ่มโปรโมชั่น</Nav.Link> */}
-                                    <Nav.Link href="/StaticService">การเข้าใช้บริการ</Nav.Link>
+                                    <Nav.Link href="/test_hc">การเข้าใช้บริการ</Nav.Link>
 
                                     <div className="dropdown">
                                         <button className="dropbtn">รายรับ-รายจ่าย<MDBIcon icon="angle-down" /></button>
