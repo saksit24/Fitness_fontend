@@ -26,10 +26,11 @@ class S_Plants_in_network extends Component {
             month_detail: []
         }
     }
+
     componentWillMount() {
         this.get_plant()
     }
-    
+
     get_plant = async () => {
         try {
             await get('neo_firm/get_plant_in_network', user_token).then((result) => {

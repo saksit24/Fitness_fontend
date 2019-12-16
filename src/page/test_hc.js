@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-import { get } from '../service/service';
+import { post } from '../service/service'
 import moment from 'moment'
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+import MomentLocaleUtils, {
+  formatDate,
+  parseDate,
+} from 'react-day-picker/moment'
+
+import 'moment/locale/th';
+
+
 
 
 Highcharts.setOptions({
@@ -21,22 +31,42 @@ class test_hc extends Component {
       user_id: '',
       date: '',
       time: '',
+      index_people: 0,
+      data_month: [],
+      data_peoples: [],
+      test_data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 0, 0, 0, 0, 0, 0],
+      selectedDay: moment(),
+
+
     }
+    this.handleDayChange = this.handleDayChange.bind(this);
   }
+
 
   componentWillMount() {
-    this.get_people()
+    this.get_people(moment().format("YYYY-MM-DD"))
   }
 
-  get_people = async () => {
-    try {
-      await get('user/get_access', null).then((result) => {
-        if (result.success) {
-          this.setState({
-            data_people: result.result
 
-          })
+  handleDayChange(day) {
+    this.setState({ selectedDay: moment(day) });
+    this.get_people(moment(day).format("YYYY-MM-DD"))
+  }
+
+
+  get_people = async (date) => {
+    let object = {
+      date: date
+    }
+    try {
+      await post(object, 'user/get_access', null).then((result) => {
+        if (result.success) {
+          // alert('yesssss')
           console.log('get_people', result.result)
+          this.time_check(result.result)
+
+
+
         }
         else {
           alert(result.error_message)
@@ -49,9 +79,48 @@ class test_hc extends Component {
     }
   }
 
+  time_check(data) { 
+
+    let people = []
+    if (data.length > 0) {
+
+      for (let i = 0; i <= 16; i++) {
+
+       
+        let people_count = 0
+        data.map((data_emement) => {
+          if(moment("08:00:00","hh:mm:ss").add(i, 'hours').format('HH')  === moment(data_emement.time,"hh:mm:ss").format("HH") ){
+            people_count += 1
+
+
+          }else{
+
+          }
+        })
+        people.push(people_count)
+      }
+
+    } else {
+      people = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    }
+
+    console.log("people", people)
+    this.setState({
+      data_peoples:people
+    })
+
+  
+  }
+
+
   render() {
     const today = moment().format('LTS');
     const to_date = moment().format("LL");
+
+    const { selectedDay } = this.state;
+
+
+
     var options = {
 
       title: {
@@ -66,7 +135,7 @@ class test_hc extends Component {
       },
 
       xAxis: {
-        categories: ['12.00-13.00', '13.00-14.00', '14.00-15.00', '15.00-16.00', '16.00-17.00', '17.00-18.00', '18.00-19.00', '19.00-20.00', '20.00-21.00', '21.00-22.00', '22.00-23.00', '23.00-0.00']
+        categories: ['08.00-08.59', '09.00-09.59', '10.00-10.59', '11.00-11.59', '12.00-12.59', '13.00-13.59', '14.00-14.59', '15.00-15.59', '16.00-16.59', '17.00-17.59', '18.00-18.59', '19.00-19.59','20.00-20.59','21.00-21.59','22.00-22.59','23.00-23.59','00.00-00.59']
       },
 
       yAxis: {
@@ -98,7 +167,7 @@ class test_hc extends Component {
       series: [{
         type: 'column',
         colorByPoint: true,
-        data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
+        data: this.state.data_peoples,
         showInLegend: false,
         labels: {
           enabled: true,
@@ -119,11 +188,24 @@ class test_hc extends Component {
     return (
       <div>
         <div>
-          <h1>{to_date}</h1>
+          <h1>{this.state.selectedDay.format("LL")}</h1>
+        </div>
+        <div>
+          <DayPickerInput
+            formatDate={formatDate}
+            parseDate={parseDate}
+            format="ll"
+            placeholder={`${formatDate(new Date(), 'll', 'th')}`}
+            dayPickerProps={{
+              locale: 'th',
+              localeUtils: MomentLocaleUtils,
+            }}
+            onDayChange={this.handleDayChange}
+          />
         </div>
 
         <div>
-          
+
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
 
