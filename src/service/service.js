@@ -3,6 +3,7 @@ export const ip = "http://192.168.1.38:3003/api/v1/"  //wifi สำนักง�
 //export const ip = "http://127.0.0.1:3003/api/v1/"
 //export const ip = "http://142.4.201.250:3003/api/v1/"
 // export const ip = "http://192.168.137.1:3003/api/v1/" //wifi คอมกาย
+// export const ip = "http://172.16.138.120:3003/api/v1/" //ais wifi
 
 
 export const get = (path, token) => new Promise((resolve, reject) => {

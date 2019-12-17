@@ -152,7 +152,7 @@ class Home extends Component {
         } catch (error) {
             alert('error', error);
         }
-        // console.log("Signup" + this.state);
+        console.log("Signup" + this.state);
     }
 
 

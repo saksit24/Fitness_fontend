@@ -33,7 +33,7 @@ class FormExampleForm extends Component {
             code_product: this.state.code_product,
             image_product: this.state.pro_image
         };
-        
+
         try {
             await post(object, "product/add_product", null).then(result => {
                 console.log("product", result);
@@ -50,6 +50,32 @@ class FormExampleForm extends Component {
         }
         // console.log("Signup" + this.state);
     }
+
+
+
+    add_product_course = async () => {
+        let object = {
+            name_product: this.state.name_product,
+            price_product: this.state.price_product,
+        };
+        try {
+            await post(object, "product/add_product_course", null).then(result => {
+                console.log("product", result);
+                if (result.success) {
+                    swal("เพิ่มสินค้าเรียบร้อย", "", "success");
+                    setTimeout(() => { window.location.href = "/add_product" }, 1000)
+
+                } else {
+                    alert('error ' + result.error_message);
+                }
+            });
+        } catch (error) {
+            alert('error :', error);
+        }
+        // console.log("Signup" + this.state);
+    }
+
+
 
 
     uploadpicture = (e) => {
@@ -85,6 +111,14 @@ class FormExampleForm extends Component {
             type_product: event.target.value
         })
     }
+
+    ondropdown_c = (event) => {
+        console.log("event", event.target.value)
+
+        this.setState({
+            name_product: event.target.value
+        })
+    }
     // onsubmit=()=>{
     //         alert('submit success !!')        
     // }
@@ -104,8 +138,7 @@ class FormExampleForm extends Component {
                                 <option value="1">เครื่องดื่ม</option>
                                 <option value="2">อาหาร</option>
                                 <option value="3">เวย์โปรตีน</option>
-                                <option value="4">คอร์ส</option>
-                                <option value="5">อื่นๆ</option>
+                                <option value="4">อื่นๆ</option>
                             </select>
 
                             <label style={{ fontSize: 25 }} >รหัสสินค้า</label>
@@ -130,28 +163,25 @@ class FormExampleForm extends Component {
                         </div>
                     </Tab>
                     <Tab eventKey="2" title="เพิ่มคอร์ส">
-                    <div className="con">
+                        <div className="con">
                             <label style={{ fontSize: 25 }} >ประเภท</label>
-                            <select onChange={this.ondropdown} style={{ fontSize: 20 }} >
+                            <select onChange={this.ondropdown_c} style={{ fontSize: 20 }} >
                                 <option value="0" disabled selected hidden>กรุณาเลือกประเภท</option>
                                 <option value="1">รายครั้ง</option>
                                 <option value="2">รายเดือน</option>
                                 <option value="3">รายปี</option>
-                                
-                            </select>
 
-                            <label style={{ fontSize: 25 }}>ราคาทุน(ทั้งหมด)</label>
-                            <input style={{ fontSize: 20 }} name="capital_price_product" onChange={this.oninput} type="text" placeholder="ถ้าไม่มีกรุณาใส่เครื่องหมาย - "></input>
-                            <label style={{ fontSize: 25 }}>ราคาขาย/ชิ้น</label>
-                            <input style={{ fontSize: 20 }} name="price_product" onChange={this.oninput} type="text" placeholder="กรุณากรอกราคาขาย"></input>
-                            
-                        
+                            </select>
+                            <label style={{ fontSize: 25 }}>ราคา</label>
+                            <input style={{ fontSize: 20 }} name="price_product" onChange={this.oninput} type="text" placeholder="กรุณากรอกราคา"></input>
+
+
                         </div>
                         <div >
 
-                            <button className="btn-group" onClick={this.add_product}>เพิ่มคอร์ส</button>
+                            <button className="btn-group" onClick={() => this.add_product_course()}>เพิ่มคอร์ส</button>
                         </div>
-                </Tab>
+                    </Tab>
                 </Tabs>
             </div>
         )
