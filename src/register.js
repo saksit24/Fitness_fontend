@@ -173,9 +173,9 @@ class register extends Component {
                             <Form.Label style={{ float: 'left' }}>ประเภท</Form.Label>
                             <Form.Control name="gender" onChange={this.ondropdown2} as="select">
                                 <option value="0" disabled selected hidden>กรุณาเลือกเพศ</option>
-                                <option value="1">ชาย</option>
-                                <option value="2">หญิง</option>
-                                <option value="3">ไม่ระบุเพศ</option>
+                                <option value="ชาย">ชาย</option>
+                                <option value="หญิง">หญิง</option>
+                            
                             </Form.Control>
 
                         </Form.Group>

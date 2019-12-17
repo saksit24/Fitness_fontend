@@ -36,6 +36,10 @@ class test_hc extends Component {
       data_peoples: [],
       test_data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 0, 0, 0, 0, 0, 0],
       selectedDay: moment(),
+      peopleTotal: '',
+      peopleMax: '',
+      peopleMin: '',
+
 
 
     }
@@ -79,43 +83,46 @@ class test_hc extends Component {
     }
   }
 
-  time_check(data) { 
-
+  time_check(data) {
     let people = []
     if (data.length > 0) {
-
       for (let i = 0; i <= 16; i++) {
-
-       
         let people_count = 0
         data.map((data_emement) => {
-          if(moment("08:00:00","hh:mm:ss").add(i, 'hours').format('HH')  === moment(data_emement.time,"hh:mm:ss").format("HH") ){
+          if (moment("08:00:00", "hh:mm:ss").add(i, 'hours').format('HH') === moment(data_emement.time, "hh:mm:ss").format("HH")) {
             people_count += 1
-
-
-          }else{
-
+          } else {
           }
         })
         people.push(people_count)
+
       }
 
     } else {
       people = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
     }
 
-    console.log("people", people)
+
+    this.state.peopleTotal = people.reduce((totalpeople, people) => totalpeople + people, 0);
+    this.state.peopleMax = Math.max(...people)
+    this.state.peopleMin = Math.min.apply(null, people)
+
+    console.log("max", this.state.peopleMax)
+    console.log("min", this.state.peopleMin)
     this.setState({
-      data_peoples:people
+      data_peoples: people
+
     })
 
-  
+
   }
 
 
   render() {
     const today = moment().format('LTS');
     const to_date = moment().format("LL");
+
 
     const { selectedDay } = this.state;
 
@@ -135,7 +142,7 @@ class test_hc extends Component {
       },
 
       xAxis: {
-        categories: ['08.00-08.59', '09.00-09.59', '10.00-10.59', '11.00-11.59', '12.00-12.59', '13.00-13.59', '14.00-14.59', '15.00-15.59', '16.00-16.59', '17.00-17.59', '18.00-18.59', '19.00-19.59','20.00-20.59','21.00-21.59','22.00-22.59','23.00-23.59','00.00-00.59']
+        categories: ['08.00-08.59', '09.00-09.59', '10.00-10.59', '11.00-11.59', '12.00-12.59', '13.00-13.59', '14.00-14.59', '15.00-15.59', '16.00-16.59', '17.00-17.59', '18.00-18.59', '19.00-19.59', '20.00-20.59', '21.00-21.59', '22.00-22.59', '23.00-23.59', '00.00-00.59']
       },
 
       yAxis: {
@@ -187,28 +194,58 @@ class test_hc extends Component {
 
     return (
       <div>
-        <div>
+        {/* <div>
           <h1>{this.state.selectedDay.format("LL")}</h1>
-        </div>
+        </div> */}
         <div>
-          <DayPickerInput
-            formatDate={formatDate}
-            parseDate={parseDate}
-            format="ll"
-            placeholder={`${formatDate(new Date(), 'll', 'th')}`}
-            dayPickerProps={{
-              locale: 'th',
-              localeUtils: MomentLocaleUtils,
-            }}
-            onDayChange={this.handleDayChange}
-          />
-        </div>
+          <table>
+            <tr>
+              <td>
+                <DayPickerInput
+                  formatDate={formatDate}
+                  parseDate={parseDate}
+                  format="ll"
+                  placeholder={`${formatDate(new Date(), 'll', 'th')}`}
+                  dayPickerProps={{
+                    locale: 'th',
+                    localeUtils: MomentLocaleUtils,
+                  }}
+                  onDayChange={this.handleDayChange}
 
-        <div>
+                />
+              </td>
+            </tr>
+          </table>
+
+        </div>
+        <br />
+        <div >
 
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
+        
+        <div>
+          <table style={{ border: "1px solid #000" }}>
+            <tr style={{ border: "1px solid #000" }}>
+              <th style={{ border: "1px solid #000" }}>วันที่</th>
+              <th style={{ border: "1px solid #000" }}> {to_date} </th>
 
+            </tr>
+            <tr style={{ border: "1px solid #000" }}>
+              <th style={{ border: "1px solid #000" }}>จำนวนคนเข้าใช้บริการทั้งหมด</th>
+              <th style={{ border: "1px solid #000" }}>{this.state.peopleTotal} คน</th>
+            </tr>
+            <tr style={{ border: "1px solid #000" }}>
+              <th style={{ border: "1px solid #000" }}>จำนวนคนเข้าใช้บริการมากที่สุด</th>
+              <th style={{ border: "1px solid #000" }}>{this.state.peopleMax} คน</th>
+            </tr>
+            <tr style={{ border: "1px solid #000" }}>
+              <th style={{ border: "1px solid #000" }}>จำนวนคนเข้าใช้บริการน้อยที่สุด</th>
+              <th style={{ border: "1px solid #000" }}>คน</th>
+            </tr>
+          </table>
+        </div>
+        <br />
 
       </div>
     );
