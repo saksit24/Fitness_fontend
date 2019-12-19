@@ -228,7 +228,7 @@ class test_hc extends Component {
           <table style={{ border: "1px solid #000" }}>
             <tr style={{ border: "1px solid #000" }}>
               <th style={{ border: "1px solid #000" }}>วันที่</th>
-              <th style={{ border: "1px solid #000" }}> {to_date} </th>
+              <th style={{ border: "1px solid #000" }}> {moment(this.state.selectedDay).format('DD-MM-YYYY')} </th>
 
             </tr>
             <tr style={{ border: "1px solid #000" }}>
@@ -239,10 +239,10 @@ class test_hc extends Component {
               <th style={{ border: "1px solid #000" }}>จำนวนคนเข้าใช้บริการมากที่สุด</th>
               <th style={{ border: "1px solid #000" }}>{this.state.peopleMax} คน</th>
             </tr>
-            <tr style={{ border: "1px solid #000" }}>
+            {/* <tr style={{ border: "1px solid #000" }}>
               <th style={{ border: "1px solid #000" }}>จำนวนคนเข้าใช้บริการน้อยที่สุด</th>
               <th style={{ border: "1px solid #000" }}>คน</th>
-            </tr>
+            </tr> */}
           </table>
         </div>
         <br />
